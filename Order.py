@@ -71,15 +71,18 @@ with st.form("Submit Order", clear_on_submit = True):
 #################
 #recipt function#
 #################
-def recipt(item_list, label, naame, phone, mail, home):
+def recipt(item_list, label, naame, phone, mail, address):
     total_cost = sum(item_list)
-    recipt_text = '''
+    recipt_text = f'''
+Hello {naame}!
+Email address: {mail}
+Contact No. {phone}
+Delivery address {address}
+{"#"*30}
 '''
+
     for name in label:
         index = label.index(name)
-        recipt_text += f"Hello {naame}!"
-        recipt_text += f"\nEmail ID: {mail}\nContact Number: {phone}\nDelivery Address: {home}"
-        recipt_text+= "#"*30
         if item_list[index] > 0:
             recipt_text += f"\n{label[index]}: ${item_list[index]}0"
     recipt_text += f"\nTotal Cost of Order: ${total_cost}0.\n{"#"*30}\n~~~THANK YOU FOR ORDERING FROM PALANI's KITCHEN~~~"
@@ -94,8 +97,7 @@ doc.new_page()
 page = doc[0]
 image_rectangle = fitz.Rect(450, 20, 550, 120)
 page.insert_image(image_rectangle, filename="logo.jpeg")
-page.insert_text(pdf.Point(49, 70), "PALANI's KITCHEN")
-page.insert_text(pdf.Point(50,50), recipt(items, name_label))
+page.insert_text(pdf.Point(50,50), recipt(items, name_label, name, hp_num, email, home))
 doc.save("customer_recipt.pdf")
 pdf_bytes = doc.write()
 

@@ -9,10 +9,6 @@ st.set_page_config(
 st.title("Palani's Kitchen")
 st.header("Welcome to Palani's Kitchen. A business established since 2025?")
 
-total = 0
-
-
-
 st.subheader("Breakfast and Dinner")
 idli = st.number_input("Idli - $3.00", step=1,) * 3.00
 dosai = st.number_input("Dosai - $3.00", step=1) * 3.00
@@ -38,5 +34,38 @@ sweets = st.number_input("Sweets - $2.00", step=1) * 2.00
 crunchy = st.number_input("Crunchy Snacks - $2.00", step=1) * 2.00
 drinks = st.number_input("Drinks - $1.50", step=1) * 1.50
 
-total =idli+dosai+pongal+puri+naan+chapati+prata+meal_veg+meal_nonveg+veg_b+chick_b+mutton_b+fish_b+sweets+crunchy+drinks
-st.subheader(f"Total: ${round(total,4)}") 
+
+
+items = [idli, dosai, pongal, puri, naan, chapati, prata, curry, meal_veg, meal_nonveg, veg_b, chick_b, mutton_b, fish_b, sweets, crunchy, drinks]
+name_label = ["Idli", "Dosai", "Pongal", "Puri", "Naan", "Chapati", "Prata", "Curry", "Meals (Veg)", "Meals (Non-Veg)", "Veg Briyani", "Chicken Briyani", "Mutton Briyani", "Fish Briyani", "Sweets", "Crunchy Snacks", "Drinks"]
+
+total_cost = sum(items)
+
+
+
+
+def recipt(item_list, label):
+    total_cost = sum(item_list)
+    recipt_text = '''
+'''
+    for name in label:
+        index = label.index(name)
+        if item_list[index] > 0:
+            recipt_text += f"\n{label[index]}: ${item_list[index]}"
+    recipt_text += f"\nTotal Cost of Order: ${total_cost}.\nThank you for ordering from Palani's Kitchen"
+
+
+    return recipt_text
+
+st.subheader("Submit Order Details")
+with st.form("Submit Order", clear_on_submit = True):
+    hp_num = st.text_input("Handphone Number ")
+
+
+    email = st.text_input("Email Address")
+    home = st.text_input("Enter your home address")
+    st.write(f"The total cost of your order is ${total_cost}")
+    submit = st.form_submit_button("Submit Details")
+    if submit == True:
+        st.write("Thank you for ordering from Palani's Kitchen")
+        submit = False

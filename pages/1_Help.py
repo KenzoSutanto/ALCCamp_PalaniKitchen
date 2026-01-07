@@ -52,6 +52,7 @@ if prompt := st.chat_input("Insert your queries here", max_chars=6767):
     with st.chat_message("user"):
         st.markdown(prompt)
     with st.chat_message("assistant"):
+        response = invoke_qa_agent(prompt)
         stream = texts.chat_message("Customer Service").write(response['messages'][1].content)
     st.session_state.messages.append({"role": "assistant", "content": response})
 

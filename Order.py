@@ -2,13 +2,14 @@ import streamlit as st
 import pymupdf as pdf
 
 #Page config
+st.logo("logo.jpeg")
 st.set_page_config(
     page_title="Main Menu"
 )
 
-
+st.image("logo.jpeg")
 st.title("Palani's Kitchen")
-st.header("Welcome to Palani's Kitchen. A business established since 2025?")
+st.header("Welcome to Palani's Kitchen. A business established since 1965")
 
 st.subheader("Breakfast and Dinner")
 idli = st.number_input("Idli - $3.00", step=1,) * 3.00

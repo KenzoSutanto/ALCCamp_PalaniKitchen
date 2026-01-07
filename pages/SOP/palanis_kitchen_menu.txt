@@ -1,0 +1,70 @@
+Palani’s Kitchen Menu
+
+Breakfast / Dinner
+
+Idli - $3.00
+
+Dosai:
+- Plain - $3.50
+- Cheese - $5.50
+- Egg - $5.30
+- Paneer - $5.60
+
+Pongal - $3.50
+Puri - $5.50
+
+Bread
+
+Naan:
+- Plain - $5.50
+- Cheese - $5.70
+- Egg - $5.85
+- Chicken - $6.30
+- Butter - $5.70
+- Garlic - $5.90
+
+Chapati - $4.30
+
+Prata:
+- Plain - $4.50
+- Cheese - $5.70
+- Egg - $6.00
+- Garlic - $5.40
+
+Curry:
+- Butter Chicken - $5.70
+- Paneer Butter - $5.90
+- Mutton - $5.85
+- Vegetable - $4.20
+- Tandoori Chicken - $5.85
+
+Lunch
+
+Regular Meals (Vegetarian) - $11.60
+Vegetable Briyani (Vegetarian) - $12.30
+Regular Meals (Non-vegetarian) - $13.10
+Chicken Briyani - $15.20
+Mutton Briyani - $15.40
+Fish Briyani - $15.90
+
+Snacks / Drinks
+
+Sweets:
+- Laddoo (3 pcs) - $1.80
+- Gulab Jamun - $1.90
+- Jalebi - $1.90
+- Mysore Pak - $1.70
+- Badusha - $1.50
+
+Others:
+- Samosa - $2.60
+- Vadai - $2.40
+- Murukku - $2.20
+- Namkeen Mixes - $3.50
+
+Drinks:
+- Sugarcane - $4.20
+- Hot Milo - $3.80
+- Masala Chai - $4.70
+- Buttermilk - $4.90
+- Fruit Punch - $4.10

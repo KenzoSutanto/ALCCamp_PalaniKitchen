@@ -14,20 +14,24 @@ client = OpenAI(
     api_key=st.secrets["OPENAI_API_KEY"]
 )
 
-with open("/SOP/palanis_kitchen_menu") as menu:
-    None
-with open("/SOP/palanis_kitchen_customer_service_rules") as rules:
-    None
+with open(r"pages/SOP/palanis_kitchen_menu.txt" , "r" ,encoding="utf-8") as menu:
+    MenuData = menu.read()
+with open(r"pages/SOP/palanis_kitchen_customer_service_rules.txt" , "r" ,encoding="utf-8") as rules:
+    Ruleset = rules.read()
 vector_store = Chroma.from_texts(
-    texts=[menu,rules],
+    texts=[MenuData,Ruleset],
 )
 
+@dynamic_prompt
 def contexting_prompt(request: ModelRequest) -> str:
-    sources = vector_store.similarity_search(request, k=20)
-    sys_msg = (f"You are a customer service agent for the restaurant Palani's Kitchen use the following context in your response {sources}")
+    last_query = request.state["messages"][-1].text
+    sources = vector_store.similarity_search(last_query, k=20)
+    docs_content = "\n\n".join(doc.page_content for doc in sources)
+    print(docs_content)
+    sys_msg = (f"You are a customer service agent for the restaurant Palani's Kitchen use the following context in your response {docs_content}")
 
     return sys_msg
-model = ChatOpenAI(model = 'gpt-5-nano')
+model = ChatOpenAI(model = 'gpt-4o-mini', api_key=st.secrets["OPENAI_API_KEY"])
 qa_agent = create_agent(model, tools=[], middleware=[contexting_prompt])
 
 def invoke_qa_agent(prompt):
@@ -42,3 +46,4 @@ if prompt := st.chat_input("Insert your queries here", max_chars=6767):
     response = invoke_qa_agent(prompt)
     texts.chat_message("Customer Service").write(response['messages'][1].content)
 
+#new stuff

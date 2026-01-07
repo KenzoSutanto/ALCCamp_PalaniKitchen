@@ -1,4 +1,5 @@
 import streamlit as st
+import pymupdf as pdf
 
 #Page config
 st.set_page_config(
@@ -39,7 +40,7 @@ drinks = st.number_input("Drinks - $1.50", step=1) * 1.50
 items = [idli, dosai, pongal, puri, naan, chapati, prata, curry, meal_veg, meal_nonveg, veg_b, chick_b, mutton_b, fish_b, sweets, crunchy, drinks]
 name_label = ["Idli", "Dosai", "Pongal", "Puri", "Naan", "Chapati", "Prata", "Curry", "Meals (Veg)", "Meals (Non-Veg)", "Veg Briyani", "Chicken Briyani", "Mutton Briyani", "Fish Briyani", "Sweets", "Crunchy Snacks", "Drinks"]
 
-total_cost = sum(items)
+total_spending = sum(items)
 
 
 
@@ -51,21 +52,34 @@ def recipt(item_list, label):
     for name in label:
         index = label.index(name)
         if item_list[index] > 0:
-            recipt_text += f"\n{label[index]}: ${item_list[index]}"
-    recipt_text += f"\nTotal Cost of Order: ${total_cost}.\nThank you for ordering from Palani's Kitchen"
-
+            recipt_text += f"\n{label[index]}: ${item_list[index]}0"
+    recipt_text += f"\nTotal Cost of Order: ${total_cost}0.\nThank you for ordering from Palani's Kitchen"
 
     return recipt_text
+
+doc = pdf.open()
+doc.new_page()
+page = doc[0]
+page.insert_text(pdf.Point(50,50), recipt(items, name_label))
+doc.save("customer_recipt.pdf")
+pdf_bytes = doc.write()
+
 
 st.subheader("Submit Order Details")
 with st.form("Submit Order", clear_on_submit = True):
     hp_num = st.text_input("Handphone Number ")
 
-
     email = st.text_input("Email Address")
     home = st.text_input("Enter your home address")
-    st.write(f"The total cost of your order is ${total_cost}")
+    st.write(f"The total cost of your order is ${total_spending}0")
     submit = st.form_submit_button("Submit Details")
     if submit == True:
-        st.write("Thank you for ordering from Palani's Kitchen")
         submit = False
+
+st.download_button(
+    label="Download Receipt",
+    data=pdf_bytes,
+    file_name="customer_receipt.pdf",
+    mime="application/pdf"
+)
+st.write("Thank you for ordering from Palani's Kitchen")

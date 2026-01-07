@@ -5,7 +5,7 @@ st.set_page_config(
 )
 
 client = OpenAI(
-    api_key=""
+    api_key=st.secrets["OPENAI_API_KEY"]
 )
 
 

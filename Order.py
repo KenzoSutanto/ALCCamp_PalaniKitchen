@@ -62,7 +62,7 @@ with st.form("Submit Order", clear_on_submit = True):
     hp_num = st.text_input("Handphone Number ")
     email = st.text_input("Email Address")
     home = st.text_input("Enter your home address")
-    st.write(f"The total cost of your order is ${total_spending}0")
+    st.write(f"The total cost of your order is ${round(total_spending, 2)}0")
     submit = st.form_submit_button("Submit Details")
     if submit == True:
         submit = False
@@ -84,8 +84,10 @@ Delivery address {address}
     for name in label:
         index = label.index(name)
         if item_list[index] > 0:
-            recipt_text += f"\n{label[index]}: ${item_list[index]}0"
-    recipt_text += f"\nTotal Cost of Order: ${total_cost}0.\n{"#"*30}\n~~~THANK YOU FOR ORDERING FROM PALANI's KITCHEN~~~"
+            recipt_text += f"\n{label[index]}: ${round(item_list[index], 2)}"
+    recipt_text += f"\nTotal Cost of Order: ${round(total_cost, 2)}0\n"
+    recipt_text += "#"*30
+    recipt_text += "\n~~~THANK YOU FOR ORDERING FROM PALANI's KITCHEN~~~"
 
     return recipt_text
 

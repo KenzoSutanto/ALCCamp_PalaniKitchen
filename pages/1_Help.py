@@ -4,6 +4,7 @@ import chromadb
 
 st.set_page_config(page_title="Help")
 st.title("Need Help with your order? Our assistant has you")
+st.logo("logo.jpeg")
 
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 

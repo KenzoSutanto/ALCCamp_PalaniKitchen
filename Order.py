@@ -1,7 +1,10 @@
 import streamlit as st
+import fitz
 import pymupdf as pdf
 
+############
 #Page config
+############
 st.logo("logo.jpeg")
 st.set_page_config(
     page_title="Main Menu"
@@ -11,6 +14,9 @@ st.image("logo.jpeg")
 st.title("Palani's Kitchen")
 st.header("Welcome to Palani's Kitchen. A business established since 1965")
 
+###########
+#Menu Items#
+###########
 st.subheader("Breakfast and Dinner")
 idli = st.number_input("Idli - $3.00", step=1,) * 3.00
 dosai = st.number_input("Dosai - $3.00", step=1) * 3.00
@@ -36,8 +42,9 @@ sweets = st.number_input("Sweets - $2.00", step=1) * 2.00
 crunchy = st.number_input("Crunchy Snacks - $2.00", step=1) * 2.00
 drinks = st.number_input("Drinks - $1.50", step=1) * 1.50
 
-
-
+#################
+#Total spendings#
+#################
 items = [idli, dosai, pongal, puri, naan, chapati, prata, curry, meal_veg, meal_nonveg, veg_b, chick_b, mutton_b, fish_b, sweets, crunchy, drinks]
 name_label = ["Idli", "Dosai", "Pongal", "Puri", "Naan", "Chapati", "Prata", "Curry", "Meals (Veg)", "Meals (Non-Veg)", "Veg Briyani", "Chicken Briyani", "Mutton Briyani", "Fish Briyani", "Sweets", "Crunchy Snacks", "Drinks"]
 
@@ -46,30 +53,13 @@ total_spending = sum(items)
 
 
 
-def recipt(item_list, label):
-    total_cost = sum(item_list)
-    recipt_text = '''
-'''
-    for name in label:
-        index = label.index(name)
-        if item_list[index] > 0:
-            recipt_text += f"\n{label[index]}: ${item_list[index]}0"
-    recipt_text += f"\nTotal Cost of Order: ${total_cost}0.\nThank you for ordering from Palani's Kitchen"
 
-    return recipt_text
-
-doc = pdf.open()
-doc.new_page()
-page = doc[0]
-page.insert_text(pdf.Point(50,50), recipt(items, name_label))
-doc.save("customer_recipt.pdf")
-pdf_bytes = doc.write()
 
 
 st.subheader("Submit Order Details")
 with st.form("Submit Order", clear_on_submit = True):
+    name = st.text_input("Name: ")
     hp_num = st.text_input("Handphone Number ")
-
     email = st.text_input("Email Address")
     home = st.text_input("Enter your home address")
     st.write(f"The total cost of your order is ${total_spending}0")
@@ -77,6 +67,41 @@ with st.form("Submit Order", clear_on_submit = True):
     if submit == True:
         submit = False
 
+
+#################
+#recipt function#
+#################
+def recipt(item_list, label, naame, phone, mail, home):
+    total_cost = sum(item_list)
+    recipt_text = '''
+'''
+    for name in label:
+        index = label.index(name)
+        recipt_text += f"Hello {naame}!"
+        recipt_text += f"\nEmail ID: {mail}\nContact Number: {phone}\nDelivery Address: {home}"
+        recipt_text+= "#"*30
+        if item_list[index] > 0:
+            recipt_text += f"\n{label[index]}: ${item_list[index]}0"
+    recipt_text += f"\nTotal Cost of Order: ${total_cost}0.\n{"#"*30}\n~~~THANK YOU FOR ORDERING FROM PALANI's KITCHEN~~~"
+
+    return recipt_text
+
+##############
+#Generate PDF#
+##############
+doc = pdf.open()
+doc.new_page()
+page = doc[0]
+image_rectangle = fitz.Rect(450, 20, 550, 120)
+page.insert_image(image_rectangle, filename="logo.jpeg")
+page.insert_text(pdf.Point(49, 70), "PALANI's KITCHEN")
+page.insert_text(pdf.Point(50,50), recipt(items, name_label))
+doc.save("customer_recipt.pdf")
+pdf_bytes = doc.write()
+
+###############
+#Recipt Output#
+###############
 st.download_button(
     label="Download Receipt",
     data=pdf_bytes,

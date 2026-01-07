@@ -29,7 +29,7 @@ with c3:
     st.image("images/pongal.png", use_container_width=True)
     pongal = st.number_input("Pongal - $3.50", step=1, key="pongal") * 3.50
 with c4:
-    st.image("images/puri.jpg", use_container_width=True)
+    st.image("images/puri.png", use_container_width=True)
     puri = st.number_input("Puri - $5.50", step=1, key="puri") * 5.50
 
 st.subheader("Breads")

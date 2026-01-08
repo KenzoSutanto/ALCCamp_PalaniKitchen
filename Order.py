@@ -41,11 +41,7 @@ c1, c2, c3, c4 = st.columns(4)
 
 with c1:
     st.image(os.path.join(BASE_DIR, "images/naan.png"), use_container_width=True)
-<<<<<<< HEAD
-    naan = st.number_input("Naan - $3.50", step=1,min_value=0, key="naan") * 3.50
-=======
     naan = st.number_input("Garlic Naan - $3.50", step=1, key="naan") * 3.50
->>>>>>> 5506f1dacfddb60b3f02f7097146104ba89dcfc5
 with c2:
     st.image(os.path.join(BASE_DIR, "images/chapati.png"), use_container_width=True)
     chapati = st.number_input("Chapati - $4.30", step=1,min_value=0, key="chapati") * 4.30
@@ -54,11 +50,7 @@ with c3:
     prata = st.number_input("Prata - $4.50", step=1,min_value=0, key="prata") * 4.50
 with c4:
     st.image(os.path.join(BASE_DIR, "images/curry.png"), use_container_width=True)
-<<<<<<< HEAD
-    curry = st.number_input("Curry", step=1,min_value=0, key="curry")
-=======
     curry = st.number_input("Butter Chicken - $5.70", step=1, key="curry")
->>>>>>> 5506f1dacfddb60b3f02f7097146104ba89dcfc5
 
 st.subheader("Lunch")
 c1, c2, c3, c4 = st.columns(4)
@@ -90,15 +82,6 @@ c1, c2, c3, c4 = st.columns(4)
 
 with c1:
     st.image(os.path.join(BASE_DIR, "images/sweets.png"), use_container_width=True)
-<<<<<<< HEAD
-    sweets = st.number_input("Sweets - $2.00", step=1,min_value=0, key="sweets") * 2.00
-with c2:
-    st.image(os.path.join(BASE_DIR, "images/crunchy.png"), use_container_width=True)
-    crunchy = st.number_input("Crunchy Snacks - $2.00",min_value=0, step=1, key="crunchy") * 2.00
-with c3:
-    st.image(os.path.join(BASE_DIR, "images/drinks.png"), use_container_width=True)
-    drinks = st.number_input("Drinks - $1.50", step=1,min_value=0, key="drinks") * 1.50
-=======
     sweets = st.number_input("Gulab Jamun - $2.00", step=1, key="sweets") * 2.00
 with c2:
     st.image(os.path.join(BASE_DIR, "images/crunchy.png"), use_container_width=True)
@@ -106,7 +89,6 @@ with c2:
 with c3:
     st.image(os.path.join(BASE_DIR, "images/drinks.png"), use_container_width=True)
     drinks = st.number_input("Fruit Punch - $1.50", step=1, key="drinks") * 1.50
->>>>>>> 5506f1dacfddb60b3f02f7097146104ba89dcfc5
 
 #################
 #Total spendings#
@@ -137,7 +119,7 @@ with st.form("Submit Order", clear_on_submit=True):
     submit = st.form_submit_button("Submit Details")
 
 #################
-#recipt function#
+#recipt function# test
 #################
 def recipt(item_list, label, naame, phone, mail, address):
     total_cost = sum(item_list)

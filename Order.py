@@ -24,70 +24,70 @@ c1, c2, c3, c4 = st.columns(4)
 
 with c1:
     st.image(os.path.join(BASE_DIR, "images/idli.png"), use_container_width=True)
-    idli = st.number_input("Idli - $3.00", step=1, key="idli") * 3.00
+    idli = st.number_input("Idli - $3.00", step=1,min_value=0, key="idli") * 3.00
 with c2:
     st.image(os.path.join(BASE_DIR, "images/dosai.png"), use_container_width=True)
-    dosai = st.number_input("Dosai - $3.00", step=1, key="dosai") * 3.00
+    dosai = st.number_input("Dosai - $3.00", step=1,min_value=0, key="dosai") * 3.00
 with c3:
     st.image(os.path.join(BASE_DIR, "images/pongal.png"), use_container_width=True)
-    pongal = st.number_input("Pongal - $3.50", step=1, key="pongal") * 3.50
+    pongal = st.number_input("Pongal - $3.50", step=1,min_value=0, key="pongal") * 3.50
 with c4:
     st.image(os.path.join(BASE_DIR, "images/puri.png"), use_container_width=True)
-    puri = st.number_input("Puri - $5.50", step=1, key="puri") * 5.50
+    puri = st.number_input("Puri - $5.50", step=1,min_value=0, key="puri") * 5.50
 
 st.subheader("Breads")
 c1, c2, c3, c4 = st.columns(4)
 
 with c1:
     st.image(os.path.join(BASE_DIR, "images/naan.png"), use_container_width=True)
-    naan = st.number_input("Naan - $3.50", step=1, key="naan") * 3.50
+    naan = st.number_input("Naan - $3.50", step=1,min_value=0, key="naan") * 3.50
 with c2:
     st.image(os.path.join(BASE_DIR, "images/chapati.png"), use_container_width=True)
-    chapati = st.number_input("Chapati - $4.30", step=1, key="chapati") * 4.30
+    chapati = st.number_input("Chapati - $4.30", step=1,min_value=0, key="chapati") * 4.30
 with c3:
     st.image(os.path.join(BASE_DIR, "images/prata.png"), use_container_width=True)
-    prata = st.number_input("Prata - $4.50", step=1, key="prata") * 4.50
+    prata = st.number_input("Prata - $4.50", step=1,min_value=0, key="prata") * 4.50
 with c4:
     st.image(os.path.join(BASE_DIR, "images/curry.png"), use_container_width=True)
-    curry = st.number_input("Curry", step=1, key="curry")
+    curry = st.number_input("Curry", step=1,min_value=0, key="curry")
 
 st.subheader("Lunch")
 c1, c2, c3, c4 = st.columns(4)
 
 with c1:
     st.image(os.path.join(BASE_DIR, "images/meal_veg.png"), use_container_width=True)
-    meal_veg = st.number_input("Regular Meals (Vegetarian) - $11.60", step=1, key="meal_veg") * 11.60
+    meal_veg = st.number_input("Regular Meals (Vegetarian) - $11.60", step=1,min_value=0, key="meal_veg") * 11.60
 with c2:
     st.image(os.path.join(BASE_DIR, "images/meal_nonveg.png"), use_container_width=True)
-    meal_nonveg = st.number_input("Regular Meals (Non-vegetarian) - $15.10", step=1, key="meal_nonveg") * 15.10
+    meal_nonveg = st.number_input("Regular Meals (Non-vegetarian) - $15.10", step=1,min_value=0, key="meal_nonveg") * 15.10
 with c3:
     st.image(os.path.join(BASE_DIR, "images/veg_briyani.png"), use_container_width=True)
-    veg_b = st.number_input("Vegetable Briyani - $12.30", step=1, key="veg_b") * 12.30
+    veg_b = st.number_input("Vegetable Briyani - $12.30", step=1,min_value=0, key="veg_b") * 12.30
 with c4:
     st.image(os.path.join(BASE_DIR, "images/chicken_briyani.png"), use_container_width=True)
-    chick_b = st.number_input("Chicken Briyani - $15.20", step=1, key="chick_b") * 15.20
+    chick_b = st.number_input("Chicken Briyani - $15.20", step=1,min_value=0, key="chick_b") * 15.20
 
 c1, c2, c3, c4 = st.columns(4)
 
 with c1:
     st.image(os.path.join(BASE_DIR, "images/mutton_briyani.png"), use_container_width=True)
-    mutton_b = st.number_input("Mutton Briyani - $15.40", step=1, key="mutton_b") * 15.40
+    mutton_b = st.number_input("Mutton Briyani - $15.40", step=1,min_value=0, key="mutton_b") * 15.40
 with c2:
     st.image(os.path.join(BASE_DIR, "images/fish_briyani.png"), use_container_width=True)
-    fish_b = st.number_input("Fish Briyani - $15.90", step=1, key="fish_b") * 15.90
+    fish_b = st.number_input("Fish Briyani - $15.90", step=1,min_value=0, key="fish_b") * 15.90
 
 st.subheader("Snacks/Drinks")
 c1, c2, c3, c4 = st.columns(4)
 
 with c1:
     st.image(os.path.join(BASE_DIR, "images/sweets.png"), use_container_width=True)
-    sweets = st.number_input("Sweets - $2.00", step=1, key="sweets") * 2.00
+    sweets = st.number_input("Sweets - $2.00", step=1,min_value=0, key="sweets") * 2.00
 with c2:
     st.image(os.path.join(BASE_DIR, "images/crunchy.png"), use_container_width=True)
-    crunchy = st.number_input("Crunchy Snacks - $2.00", step=1, key="crunchy") * 2.00
+    crunchy = st.number_input("Crunchy Snacks - $2.00",min_value=0, step=1, key="crunchy") * 2.00
 with c3:
     st.image(os.path.join(BASE_DIR, "images/drinks.png"), use_container_width=True)
-    drinks = st.number_input("Drinks - $1.50", step=1, key="drinks") * 1.50
+    drinks = st.number_input("Drinks - $1.50", step=1,min_value=0, key="drinks") * 1.50
 
 #################
 #Total spendings#
